@@ -1,0 +1,7 @@
+dimension,rule_in_plain_words,column,how_you_measured_it,failing_rows,total_rows,score_pct,severity_high_medium_low,who_should_fix_owner_steward_custodian
+Completeness,order_date is filled (needed for revenue reporting),order_date,ExpectColumnValuesToNotBeNull,11,5207,99.79,High,"Steward, next morning"
+Uniqueness,order_id is unique (prevents double-counting orders),order_id,ExpectColumnValuesToBeUnique,14,5207,99.73,Critical,Custodian on call + Owner
+Accuracy,total_amount_eur between 0.01 and 10000 (no zero/negative orders),total_amount_eur,ExpectColumnValuesToBeBetween,6,5207,99.88,Critical,Custodian on call + Owner
+Validity,status between allowed values (standardizes reporting),status,ExpectColumnValuesToBeInSet,9,5207,99.83,Medium,"Steward, weekly report"
+Consistency,customer_id exists in customers (foreign-key integrity),customer_id,ExpectColumnValuesToBeInSet,14,5207,99.73,High,"Steward, next morning"
+Accuracy,order_date_dt not in the future (2020-01-01 to 2026-11-25),order_date_dt,ExpectColumnValuesToBeBetween,5,5207,99.90,High,"Steward, next morning"

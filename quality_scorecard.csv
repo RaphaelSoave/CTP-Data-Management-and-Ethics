@@ -1,0 +1,7 @@
+dimension,rule_in_plain_words,column,how_you_measured_it,failing_rows,total_rows,score_pct,severity_high_medium_low,who_should_fix_owner_steward_custodian
+Completeness,all cells are filled,all columns,"df.isna().sum().sum()",115,16133,99.29,High,Data Steward
+Uniqueness,email is unique (normalized),email,"email_norm.duplicated(keep=False).sum()",168,1241,86.46,High,Data Steward
+Validity,valid email / postal_code / loyalty_tier,"email, postal_code, loyalty_tier","count_invalid_postal_codes + nb_emails_invalides + invalid_tiers_count",128,1241,89.69,High,Data Custodian
+Consistency,signup_date follows YYYY-MM-DD format,signup_date,"(~df['signup_date'].str.match('^\d{4}-\d{2}-\d{2}$', na=False)).sum()",303,1241,75.58,Medium,Data Custodian
+Accuracy,birth_date not in future or before 1906,birth_date,"future_birth_dates + old_birth_dates",8,1241,99.36,High,Data Owner
+Timeliness,not measured in notebook,,,,,,,
